@@ -9,7 +9,7 @@ export default {
       colors: {
         'orange': '#fc6c4b',
         'gray': '#6a7280',
-        'gray-light': '#d1d5db'
+        'gray-light': '#d2d4d7',
       },
     },
   },
