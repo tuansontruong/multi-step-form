@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   html {
-    @apply font-serif;
+    @apply font-poppins;
   }
   body {
     background-color:#f3f3e3;
