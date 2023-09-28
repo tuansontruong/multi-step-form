@@ -13,7 +13,8 @@ export function PersonalInformationForm() {
           <div>
             <input
               type="text"
-              className="w-full border-[1px] border-gray-light rounded-md p-2 focus:border-orange focus:outline-none"
+              placeholder="Shawn Mendes"
+              className="w-full border-[1px] font-extralight border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
             />
           </div>
         </div>
@@ -21,21 +22,24 @@ export function PersonalInformationForm() {
           <div className=" font-bold mb-2">Email Address</div>
           <input
             type="text"
-            className="w-full border-[1px] border-gray-light rounded-md p-2 focus:border-orange focus:outline-none"
+            placeholder="name@email.com"
+            className="w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
           />
         </div>
         <div>
           <div className=" font-bold mb-2">Phone Number</div>
           <input
             type="text"
-            className="w-full border-[1px] border-gray-light rounded-md p-2 focus:border-orange focus:outline-none"
+            placeholder="+1 234 567 890"
+            className="w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
           />
         </div>
         <div>
           <div className=" font-bold mb-2">Portfolio / Github Link</div>
           <input
             type="text"
-            className="w-full border-[1px] border-gray-light rounded-md p-2 focus:border-orange focus:outline-none"
+            placeholder="github.com/tuansontruong"
+            className="w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
           />
         </div>
       </div>
