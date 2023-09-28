@@ -6,7 +6,7 @@ export interface IStepsProps {
   currentStep: number;
 }
 
-export function Steps({ numberOfSteps, currentStep }: IStepsProps) {
+export function FormSteps({ numberOfSteps, currentStep }: IStepsProps) {
   return (
     <div className=" flex flex-row items-center justify-center gap-4">
       {Array.from({ length: numberOfSteps }, (_, index) => {

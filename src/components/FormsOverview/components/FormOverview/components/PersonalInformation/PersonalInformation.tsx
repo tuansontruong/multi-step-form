@@ -4,10 +4,10 @@ export function PersonalInformation() {
   return (
     <div>
       <h3 className="text-2xl font-extrabold">Personal Information</h3>
-      <div className=" mt-3 text-gray">
+      <div className=" mt-2 text-gray">
         Please provide your personal details so we can get to know you better
       </div>
-      <div className=" mt-6 grid gap-6 grid-cols-2 grid-rows-2">
+      <div className=" mt-6 grid gap-4 grid-cols-2 grid-rows-2">
         <div>
           <div className=" font-bold mb-2">Full Name</div>
           <div>
