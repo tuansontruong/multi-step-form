@@ -1,12 +1,21 @@
 import { Button } from "@common";
 
-export interface ICTAsProps {}
+interface FormFooterProps {
+  isFirstStep: boolean;
+}
 
-export function FormFooter() {
+export function FormFooter({ isFirstStep }: FormFooterProps) {
   return (
-    <div className=" flex flex-row justify-between">
-      <Button variant="outlined">Go Back</Button>
-      <Button variant="primary">Next Step</Button>
+    <div>
+      {!isFirstStep && (
+        <div className="float-left">
+          <Button variant="outlined">Go Back</Button>
+        </div>
+      )}
+
+      <div className="float-right">
+        <Button variant="primary">Next Step</Button>
+      </div>
     </div>
   );
 }
