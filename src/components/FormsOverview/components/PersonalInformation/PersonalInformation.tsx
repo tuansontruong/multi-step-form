@@ -1,6 +1,6 @@
 export interface IPersonalInformationProps {}
 
-export function PersonalInformation(props: IPersonalInformationProps) {
+export function PersonalInformation() {
   return (
     <div>
       <h3 className="text-2xl font-extrabold">Personal Information</h3>
