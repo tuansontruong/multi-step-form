@@ -8,7 +8,7 @@ export interface IStepsProps {
 
 export function FormSteps({ numberOfSteps, currentStep }: IStepsProps) {
   return (
-    <div className=" flex flex-row items-center justify-center gap-4">
+    <div className=" flex flex-row items-center justify-center gap-0 md:gap-4">
       {Array.from({ length: numberOfSteps }, (_, index) => {
         // Determine if the current step is active or not
         const isStepActive = index < currentStep;
@@ -19,6 +19,8 @@ export function FormSteps({ numberOfSteps, currentStep }: IStepsProps) {
 
         // Determine if this is the last step or not
         const isNotLastStep = index !== numberOfSteps - 1;
+
+
         return (
           <Fragment key={index}>
             <div

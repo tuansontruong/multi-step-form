@@ -7,7 +7,7 @@ export function PersonalInformationForm() {
       <div className=" mt-2 text-gray">
         Please provide your personal details so we can get to know you better
       </div>
-      <div className=" mt-6 grid gap-4 grid-cols-2 grid-rows-2">
+      <div className=" mt-6 grid gap-4 grid-cols-1 md:grid-cols-2 grid-rows-2">
         <div>
           <div className=" font-bold mb-2">Full Name</div>
           <div>
