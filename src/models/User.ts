@@ -14,8 +14,8 @@ export const Challenge = {
     VueJS: 'vuejs'
 }
 
-type LevelKeys = typeof Level[keyof typeof Level];
-type ChallengeKeys = typeof Challenge[keyof typeof Challenge];
+export type LevelKeys = typeof Level[keyof typeof Level];
+export type ChallengeKeys = typeof Challenge[keyof typeof Challenge];
 
 
 export const userSchema = object({
