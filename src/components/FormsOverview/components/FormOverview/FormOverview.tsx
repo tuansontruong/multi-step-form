@@ -5,6 +5,7 @@ import { PersonalInformationForm } from "../PersonalInformationForm";
 import { FormFooter } from "../FormFooter";
 import { useSteps } from "../../hooks/useSteps";
 import { Case, Switch } from "react-if";
+import { SkillLevel } from "../SkillLevel/SkillLevel";
 
 const numberOfSteps = 4;
 
@@ -22,7 +23,7 @@ export function FormOverview() {
             <PersonalInformationForm />
           </Case>
           <Case condition={currentStep == 2}>
-            <div>Skill level</div>
+            <SkillLevel />
           </Case>
           <Case condition={currentStep == 3}>
             <div>Challenge Preference</div>
