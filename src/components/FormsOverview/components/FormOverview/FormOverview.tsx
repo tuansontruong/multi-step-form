@@ -1,11 +1,13 @@
 import { Separator } from "@common";
 
 import { FormSteps } from "../FormSteps";
-import { PersonalInformationForm } from "../PersonalInformationForm";
 import { FormFooter } from "../FormFooter";
 import { useSteps } from "../../hooks/useSteps";
 import { Case, Switch } from "react-if";
-import { SkillLevel } from "../SkillLevel/SkillLevel";
+
+import { PersonalInformationStep } from "../PersonalInformationStep";
+import { SkillLevelStep } from "../SkillLevelStep";
+import { ChallengePreferenceStep } from "../ChallengePreferenceStep";
 
 const numberOfSteps = 4;
 
@@ -20,13 +22,13 @@ export function FormOverview() {
 
         <Switch>
           <Case condition={currentStep == 1}>
-            <PersonalInformationForm />
+            <PersonalInformationStep />
           </Case>
           <Case condition={currentStep == 2}>
-            <SkillLevel />
+            <SkillLevelStep />
           </Case>
           <Case condition={currentStep == 3}>
-            <div>Challenge Preference</div>
+            <ChallengePreferenceStep />
           </Case>
           <Case condition={currentStep == 4}>
             <div>Review and confirm</div>
