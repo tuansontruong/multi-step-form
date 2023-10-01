@@ -6,7 +6,7 @@ import { LevelKeys, Level } from "@models";
 
 export interface ISkillLevelProps {}
 
-export function SkillLevel() {
+export function SkillLevelStep() {
   const [selectedSkill, setSelectedSkill] = useState<LevelKeys>();
   return (
     <div>
