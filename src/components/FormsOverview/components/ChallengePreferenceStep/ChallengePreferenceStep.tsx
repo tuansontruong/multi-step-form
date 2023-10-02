@@ -33,6 +33,39 @@ export function ChallengePreferenceStep() {
             isParentChecked={selectedChallenge === Challenge.HTML}
           />
         </div>
+        <div
+          className={classNames(
+            "border-[1px] border-gray-light rounded-md p-4 flex flex-row items-center gap-4 hover:cursor-pointer hover:border-orange"
+          )}
+          onClick={() => toggleSetChallenge(Challenge.ReactJS)}
+        >
+          <RadioButton
+            label={Challenge.ReactJS}
+            isParentChecked={selectedChallenge === Challenge.ReactJS}
+          />
+        </div>
+        <div
+          className={classNames(
+            "border-[1px] border-gray-light rounded-md p-4 flex flex-row items-center gap-4 hover:cursor-pointer hover:border-orange"
+          )}
+          onClick={() => toggleSetChallenge(Challenge.AngularJS)}
+        >
+          <RadioButton
+            label={Challenge.AngularJS}
+            isParentChecked={selectedChallenge === Challenge.AngularJS}
+          />
+        </div>
+        <div
+          className={classNames(
+            "border-[1px] border-gray-light rounded-md p-4 flex flex-row items-center gap-4 hover:cursor-pointer hover:border-orange"
+          )}
+          onClick={() => toggleSetChallenge(Challenge.VueJS)}
+        >
+          <RadioButton
+            label={Challenge.VueJS}
+            isParentChecked={selectedChallenge === Challenge.VueJS}
+          />
+        </div>
       </div>
     </div>
   );
