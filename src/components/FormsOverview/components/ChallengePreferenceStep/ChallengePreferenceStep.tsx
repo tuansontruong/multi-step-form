@@ -15,7 +15,7 @@ export function ChallengePreferenceStep() {
     }
   };
   return (
-    <div>
+    <div className=" md:min-w-[600px]">
       <h3 className="text-2xl font-extrabold">Challenge Preference</h3>
       <div className=" mt-2 text-gray">
         Please tell us which frontend challenges you would like to participate

@@ -3,16 +3,13 @@ import { Separator } from "@common";
 import { FormSteps } from "../FormSteps";
 import { FormFooter } from "../FormFooter";
 import { useSteps } from "../../hooks/useSteps";
-import { Case, Switch } from "react-if";
-
-import { PersonalInformationStep } from "../PersonalInformationStep";
-import { SkillLevelStep } from "../SkillLevelStep";
-import { ChallengePreferenceStep } from "../ChallengePreferenceStep";
+import { useSimpleHashRouter } from "../../hooks/useSimpleHashRouter";
 
 const numberOfSteps = 4;
 
 export function FormOverview() {
   const { currentStep, proceedToNextStep, goBackToPrevStep } = useSteps();
+  const CurrentRoute = useSimpleHashRouter();
   return (
     <div className="w-[90%] md:w-full m-auto max-w-3xl bg-white drop-shadow-lg rounded-md p-4">
       <div className="flex flex-col gap-6">
@@ -20,20 +17,7 @@ export function FormOverview() {
 
         <Separator />
 
-        <Switch>
-          <Case condition={currentStep == 1}>
-            <PersonalInformationStep />
-          </Case>
-          <Case condition={currentStep == 2}>
-            <SkillLevelStep />
-          </Case>
-          <Case condition={currentStep == 3}>
-            <ChallengePreferenceStep />
-          </Case>
-          <Case condition={currentStep == 4}>
-            <div>Review and confirm</div>
-          </Case>
-        </Switch>
+        {CurrentRoute && <CurrentRoute />}
 
         <Separator />
 

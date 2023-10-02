@@ -2,7 +2,7 @@ export interface IPersonalInformationProps {}
 
 export function PersonalInformationStep() {
   return (
-    <div>
+    <div className=" md:min-w-[600px]">
       <h3 className="text-2xl font-extrabold">Personal Information</h3>
       <div className=" mt-2 text-gray">
         Please provide your personal details so we can get to know you better
