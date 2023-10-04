@@ -9,6 +9,8 @@ export default defineConfig({
     alias: [
       { find: "@common", replacement: resolve(__dirname, "./src/common") },
       { find: "@models", replacement: resolve(__dirname, "./src/models") },
+      { find: "@hooks", replacement: resolve(__dirname, "./src/hooks") },
+      { find: "@types", replacement: resolve(__dirname, "./src/types") },
     ],
   },
 });

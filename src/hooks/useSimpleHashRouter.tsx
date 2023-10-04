@@ -1,9 +1,10 @@
+import { ROUTES, ROUTES_KEY } from "@types";
+
 import {
   ChallengePreferenceStep,
   PersonalInformationStep,
   SkillLevelStep,
-} from "../components";
-import { ROUTES, ROUTES_KEY } from "../types/routes";
+} from "../components/FormsOverview/components";
 
 const routeToComponentMapper = {
   [ROUTES.PersonalInformation]: PersonalInformationStep,
