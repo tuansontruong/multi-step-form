@@ -1,12 +1,31 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import cn from "classnames";
+import { ROUTES, ROUTES_KEY } from "../../types/routes";
 
 export interface IStepsProps {
   numberOfSteps: number;
-  currentStep: number;
+  currentRoute: ROUTES_KEY;
 }
 
-export function FormSteps({ numberOfSteps, currentStep }: IStepsProps) {
+const hashToStepMapper = (step: ROUTES_KEY) => {
+  switch (step) {
+    case ROUTES.PersonalInformation:
+      return 1;
+    case ROUTES.SkillLevel:
+      return 2;
+    case ROUTES.ChallengePreference:
+      return 3;
+    default:
+      return 1;
+  }
+};
+
+export function FormSteps({ numberOfSteps, currentRoute }: IStepsProps) {
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  useEffect(() => {
+    const step = hashToStepMapper(currentRoute);
+    setCurrentStep(step);
+  }, [currentRoute]);
   return (
     <div className=" flex flex-row items-center justify-center gap-0 md:gap-4">
       {Array.from({ length: numberOfSteps }, (_, index) => {
@@ -19,7 +38,6 @@ export function FormSteps({ numberOfSteps, currentStep }: IStepsProps) {
 
         // Determine if this is the last step or not
         const isNotLastStep = index !== numberOfSteps - 1;
-
 
         return (
           <Fragment key={index}>
