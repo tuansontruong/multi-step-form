@@ -39,6 +39,7 @@ export function FormSteps({ numberOfSteps, currentRoute }: IStepsProps) {
         // Determine if this is the last step or not
         const isNotLastStep = index !== numberOfSteps - 1;
 
+
         return (
           <Fragment key={index}>
             <div
