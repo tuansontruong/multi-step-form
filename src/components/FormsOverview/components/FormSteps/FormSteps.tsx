@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import cn from "classnames";
-import { ROUTES, ROUTES_KEY } from "../../types/routes";
+import { ROUTES, ROUTES_KEY } from "@types";
 
 export interface IStepsProps {
   numberOfSteps: number;

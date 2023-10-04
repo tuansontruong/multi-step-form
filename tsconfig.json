@@ -23,6 +23,8 @@
     "paths": {
       "@common": ["./src/common"],
       "@models": ["./src/models"],
+      "@hooks": ["./src/hooks"],
+      "@types": ["./src/types"],
     }
   },
   "include": ["src"],

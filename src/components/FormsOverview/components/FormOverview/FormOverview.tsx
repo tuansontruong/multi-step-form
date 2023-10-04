@@ -1,9 +1,9 @@
 import { Separator } from "@common";
+import { useSimpleHashRouter, useLocationHash } from "@hooks";
 
 import { FormSteps } from "../FormSteps";
 import { FormFooter } from "../FormFooter";
-import { useSimpleHashRouter } from "../../hooks/useSimpleHashRouter";
-import { useLocationHash } from "../../hooks/useLocationHash";
+
 
 const numberOfSteps = 4;
 
