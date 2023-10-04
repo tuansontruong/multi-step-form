@@ -17,11 +17,13 @@ export function FormFooter({
   return (
     <div>
       <If condition={!isFirstStep}>
-        <div className="float-left">
-          <Button variant="outlined" onClick={goBackToPrevStep}>
-            Go Back
-          </Button>
-        </div>
+        <Then>
+          <div className="float-left">
+            <Button variant="outlined" onClick={goBackToPrevStep}>
+              Go Back
+            </Button>
+          </div>
+        </Then>
       </If>
       <div className="float-right">
         <If condition={!isLastStep}>
