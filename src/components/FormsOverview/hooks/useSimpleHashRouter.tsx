@@ -11,13 +11,14 @@ const routeToComponentMapper = {
   [ROUTES.ChallengePreference]: ChallengePreferenceStep,
 };
 
+interface IUseSimpleHashRouterProps {
+  currentHash: ROUTES_KEY | undefined;
+}
+
 export function useSimpleHashRouter({
   currentHash,
-}: {
-  currentHash: ROUTES_KEY | undefined;
-}) {
+}: IUseSimpleHashRouterProps) {
   const currentRoute = routeToComponentMapper[currentHash as ROUTES_KEY];
-
   return {
     currentRoute,
   };
