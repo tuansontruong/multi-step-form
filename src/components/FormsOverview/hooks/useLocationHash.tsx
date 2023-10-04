@@ -6,9 +6,11 @@ export const useLocationHash = () => {
     ROUTES.PersonalInformation
   );
   const onHashChange = () => {
+    // If there is no hash, set the hash to the first step
     if (window.location.hash === "") {
       window.location.hash = ROUTES.PersonalInformation;
     }
+
     setCurrentHash(window.location.hash as ROUTES_KEY);
   };
   const orderedHashes = Object.values(ROUTES);
@@ -23,10 +25,10 @@ export const useLocationHash = () => {
   };
   const goBackToPrevHash = () => {
     const currentStepIndex = orderedHashes.findIndex((step) => step === currentHash);
-    const nextStepIndex = currentStepIndex - 1;
-    const nextStep = orderedHashes[nextStepIndex];
-    if (nextStep) {
-      window.location.hash = nextStep;
+    const prevStepIndex = currentStepIndex - 1;
+    const prevStep = orderedHashes[prevStepIndex];
+    if (prevStep) {
+      window.location.hash = prevStep;
     }
   };
   useEffect(() => {
