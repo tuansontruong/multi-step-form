@@ -26,7 +26,6 @@ export const userSchema = object({
 
     skillLevel: mixed<LevelKeys>().oneOf(Object.values(Level)),
     challenge: mixed<ChallengeKeys>().oneOf(Object.values(Challenge))
-
 });
 
 export interface User extends InferType<typeof userSchema> {}
