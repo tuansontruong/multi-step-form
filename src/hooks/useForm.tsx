@@ -20,10 +20,8 @@ export function useForm(): {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useReactHookForm<User>({ resolver: yupResolver(userSchema) });
   const onSubmit = (data: User) => console.log(data);
-  console.log(watch("fullName")); // watch input value by passing the name of it
 
   return {
     register,
