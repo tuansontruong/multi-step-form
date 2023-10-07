@@ -1,27 +1,31 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
+  FieldValues,
   FormState,
+  Resolver,
   UseFormHandleSubmit,
   UseFormRegister,
   useForm as useReactHookForm,
 } from "react-hook-form";
-import { User, userSchema } from "@models";
-
-import { yupResolver } from "@hookform/resolvers/yup";
 
 export interface IuseFormProps {}
 
-export function useForm(): {
-  register: UseFormRegister<User>;
-  handleSubmit: UseFormHandleSubmit<User, undefined>;
-  errors: FormState<User>["errors"];
-  onSubmit: (data: User) => void;
+export function useForm<T extends FieldValues>(
+  schema: any
+): {
+  register: UseFormRegister<T>;
+  handleSubmit: UseFormHandleSubmit<T, undefined>;
+  errors: FormState<T>["errors"];
+  onSubmit: (data: T) => void;
 } {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useReactHookForm<User>({ resolver: yupResolver(userSchema) });
-  const onSubmit = (data: User) => console.log(data);
+  } = useReactHookForm<T>({
+    resolver: yupResolver(schema) as unknown as Resolver<T, any> | undefined,
+  });
+  const onSubmit = (data: T) => console.log(data);
 
   return {
     register,
