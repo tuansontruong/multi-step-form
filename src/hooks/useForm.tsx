@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
+  DefaultValues,
   FieldValues,
   FormState,
   Resolver,
@@ -11,7 +12,9 @@ import {
 export interface IuseFormProps {}
 
 export function useForm<T extends FieldValues>(
-  schema: any
+  schema: any,
+  onSubmitGlobal: (data: T) => void,
+  defaultValues: DefaultValues<T>
 ): {
   register: UseFormRegister<T>;
   handleSubmit: UseFormHandleSubmit<T, undefined>;
@@ -24,8 +27,11 @@ export function useForm<T extends FieldValues>(
     formState: { errors },
   } = useReactHookForm<T>({
     resolver: yupResolver(schema) as unknown as Resolver<T, any> | undefined,
+    defaultValues: defaultValues,
   });
-  const onSubmit = (data: T) => console.log(data);
+
+  // submit to global handler when validation succeed
+  const onSubmit = (data: T) => onSubmitGlobal(data);
 
   return {
     register,

@@ -1,30 +1,51 @@
 import { Separator } from "@common";
-import { useSimpleHashRouter, useLocationHash, useForm } from "@hooks";
+import { useLocationHash } from "@hooks";
 
 import { FormSteps } from "../FormSteps";
 import { FormFooter } from "../FormFooter";
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
+import { Case, Switch } from "react-if";
+import {
+  ChallengePreferenceStep,
+  PersonalInformationStep,
+  SkillLevelStep,
+} from "..";
+import { PersonalInformation } from "../../../../models/User";
 
 const numberOfSteps = 4;
 
 export function FormOverview() {
   const { currentHash, proceedToNextHash, goBackToPrevHash } =
     useLocationHash();
-  const { currentRoute: CurrentRoute } = useSimpleHashRouter({ currentHash });
 
-  const { register, handleSubmit, errors, onSubmit } = useForm();
+  const personalInformationStepRef = useRef<HTMLFormElement>(null);
+  const skillLevelStepRef = useRef<HTMLFormElement>(null);
+  const challengePreferenceStepRef = useRef<HTMLFormElement>(null);
 
-  const submitRef = useRef<HTMLInputElement>(null);
-
-  const validateCurrentForm = () => {
-    submitRef.current?.click();
+  const onClickNextStep = () => {
+    if (currentHash === "#PersonalInfomation") {
+      personalInformationStepRef.current?.submit();
+    }
+    if (currentHash === "#SkillLevel") {
+      skillLevelStepRef.current?.submit();
+    }
+    if (currentHash === "#ChallengePreference") {
+      challengePreferenceStepRef.current?.submit();
+    }
   };
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0) {
-      console.log(errors);
-    } else proceedToNextHash();
-  }, [errors]);
+  const [personalInformationData, setPersonalInformationData] =
+    useState<PersonalInformation>({
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      portfolioUrl: "",
+    });
+  const onSubmitGlobal = (data: PersonalInformation) => {
+    console.log(data);
+    setPersonalInformationData(data);
+    proceedToNextHash();
+  };
 
   return (
     <div className="w-[90%] md:w-full m-auto max-w-3xl bg-white drop-shadow-lg rounded-md p-4">
@@ -33,15 +54,26 @@ export function FormOverview() {
 
         <Separator />
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {CurrentRoute && <CurrentRoute register={register} errors={errors} />}
-          <input type="submit" className="hidden" ref={submitRef} />
-        </form>
+        <Switch>
+          <Case condition={currentHash === "#PersonalInfomation"}>
+            <PersonalInformationStep
+              onSubmitGlobal={onSubmitGlobal}
+              ref={personalInformationStepRef}
+              defaultValues={personalInformationData}
+            />
+          </Case>
+          <Case condition={currentHash === "#SkillLevel"}>
+            <SkillLevelStep />
+          </Case>
+          <Case condition={currentHash === "#ChallengePreference"}>
+            <ChallengePreferenceStep />
+          </Case>
+        </Switch>
 
         <Separator />
 
         <FormFooter
-          proceedToNextStep={validateCurrentForm}
+          proceedToNextStep={onClickNextStep}
           goBackToPrevStep={goBackToPrevHash}
           isFirstStep={currentHash === "#PersonalInfomation"}
           isLastStep={!currentHash}
