@@ -1,8 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
-
-import { LevelKeys, Level } from "@models";
-
+import { Level, LevelKeys } from "@types";
 
 export interface ISkillLevelProps {}
 

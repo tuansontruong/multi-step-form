@@ -1,5 +1,5 @@
 import { RadioButton } from "@common";
-import { Challenge, ChallengeKeys } from "@models";
+import { Challenge, ChallengeKeys } from "@types";
 import classNames from "classnames";
 import { useState } from "react";
 

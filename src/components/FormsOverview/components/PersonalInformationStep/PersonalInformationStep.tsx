@@ -1,6 +1,8 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { useForm } from "@common";
 import { PersonalInformation, personalInformationSchema } from "@models";
+import { FieldErrorMessage } from "../../../../common/FieldErrorMessage";
+import classNames from "classnames";
 
 interface IPersonalInformationStep {
   onSubmitGlobal: (data: any) => void;
@@ -40,24 +42,41 @@ export const PersonalInformationStep = forwardRef(
           <div className=" mt-6 grid gap-4 grid-cols-1 md:grid-cols-2 grid-rows-2">
             <div>
               <div className=" font-bold mb-2">Full Name</div>
-              <div>
+              <div className="flex gap-1 flex-col">
                 <input
                   {...register("fullName")}
                   type="text"
                   placeholder="Shawn Mendes"
-                  className="w-full border-[1px] font-extralight border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
+                  className={classNames(
+                    "w-full border-[1px] font-extralight border-gray-light rounded-md p-2 hover:border-orange focus:outline-none",
+                    {
+                      "border-error": errors.fullName?.message,
+                    }
+                  )}
                 />
-                <p>{errors.fullName?.message}</p>
+                {errors.fullName?.message && (
+                  <FieldErrorMessage message={errors.fullName.message} />
+                )}
               </div>
             </div>
             <div>
               <div className=" font-bold mb-2">Email Address</div>
-              <input
-                {...register("email")}
-                type="text"
-                placeholder="name@email.com"
-                className="w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
-              />
+              <div className="flex gap-1 flex-col">
+                <input
+                  {...register("email")}
+                  type="text"
+                  placeholder="name@email.com"
+                  className={classNames(
+                    "w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none",
+                    {
+                      "border-error": errors.email?.message,
+                    }
+                  )}
+                />
+                {errors.email?.message && (
+                  <FieldErrorMessage message={errors.email.message} />
+                )}
+              </div>
             </div>
             <div>
               <div className=" font-bold mb-2">Phone Number</div>
