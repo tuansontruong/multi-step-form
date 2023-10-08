@@ -1,5 +1,5 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
-import { useForm } from "@hooks";
+import { useForm } from "@common";
 import { PersonalInformation, personalInformationSchema } from "@models";
 
 interface IPersonalInformationStep {
@@ -9,12 +9,15 @@ interface IPersonalInformationStep {
 
 export const PersonalInformationStep = forwardRef(
   ({ onSubmitGlobal, defaultValues }: IPersonalInformationStep, ref) => {
-
     const { handleSubmit, onSubmit, register, errors } =
-      useForm<PersonalInformation>(personalInformationSchema, onSubmitGlobal, defaultValues);
+      useForm<PersonalInformation>(
+        personalInformationSchema,
+        onSubmitGlobal,
+        defaultValues
+      );
 
     const submitRef = useRef<HTMLInputElement>(null);
-    
+
     // expose submit function to parent component
     useImperativeHandle(
       ref,
