@@ -1,16 +1,15 @@
+import { Case, Switch } from "react-if";
+
 import { Separator } from "@common";
-import { useLocationHash } from "@hooks";
+import { useLocationHash, useFormManagement } from "@hooks";
 
 import { FormSteps } from "../FormSteps";
 import { FormFooter } from "../FormFooter";
-import { useRef, useState } from "react";
-import { Case, Switch } from "react-if";
 import {
   ChallengePreferenceStep,
   PersonalInformationStep,
   SkillLevelStep,
 } from "..";
-import { PersonalInformation } from "../../../../models/User";
 
 const numberOfSteps = 4;
 
@@ -18,34 +17,13 @@ export function FormOverview() {
   const { currentHash, proceedToNextHash, goBackToPrevHash } =
     useLocationHash();
 
-  const personalInformationStepRef = useRef<HTMLFormElement>(null);
-  const skillLevelStepRef = useRef<HTMLFormElement>(null);
-  const challengePreferenceStepRef = useRef<HTMLFormElement>(null);
+  const {
+    personalInformationStepRef,
+    personalInformationData,
 
-  const onClickNextStep = () => {
-    if (currentHash === "#PersonalInfomation") {
-      personalInformationStepRef.current?.submit();
-    }
-    if (currentHash === "#SkillLevel") {
-      skillLevelStepRef.current?.submit();
-    }
-    if (currentHash === "#ChallengePreference") {
-      challengePreferenceStepRef.current?.submit();
-    }
-  };
-
-  const [personalInformationData, setPersonalInformationData] =
-    useState<PersonalInformation>({
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      portfolioUrl: "",
-    });
-  const onSubmitGlobal = (data: PersonalInformation) => {
-    console.log(data);
-    setPersonalInformationData(data);
-    proceedToNextHash();
-  };
+    onSubmitGlobal,
+    onValidateCurrentForm,
+  } = useFormManagement({ currentHash, proceedToNextHash });
 
   return (
     <div className="w-[90%] md:w-full m-auto max-w-3xl bg-white drop-shadow-lg rounded-md p-4">
@@ -73,7 +51,7 @@ export function FormOverview() {
         <Separator />
 
         <FormFooter
-          proceedToNextStep={onClickNextStep}
+          proceedToNextStep={onValidateCurrentForm}
           goBackToPrevStep={goBackToPrevHash}
           isFirstStep={currentHash === "#PersonalInfomation"}
           isLastStep={!currentHash}
