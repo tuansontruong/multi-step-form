@@ -16,6 +16,15 @@ export function useFormManagement({
   const skillLevelStepRef = useRef<HTMLFormElement>(null);
   const challengePreferenceStepRef = useRef<HTMLFormElement>(null);
 
+  // states of each form
+  const [personalInformationData, setPersonalInformationData] =
+    useState<PersonalInformation>({
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      portfolioUrl: "",
+    });
+
   const onValidateCurrentForm = () => {
     if (currentHash === "#PersonalInfomation") {
       personalInformationStepRef.current?.submit();
@@ -28,13 +37,6 @@ export function useFormManagement({
     }
   };
 
-  const [personalInformationData, setPersonalInformationData] =
-    useState<PersonalInformation>({
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      portfolioUrl: "",
-    });
   const onSubmitGlobal = (data: PersonalInformation) => {
     console.log(data);
     setPersonalInformationData(data);
