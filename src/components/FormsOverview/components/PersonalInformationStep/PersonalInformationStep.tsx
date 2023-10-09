@@ -18,6 +18,7 @@ export const PersonalInformationStep = forwardRef(
         defaultValues
       );
 
+
     const submitRef = useRef<HTMLInputElement>(null);
 
     // expose submit function to parent component
@@ -26,7 +27,7 @@ export const PersonalInformationStep = forwardRef(
       () => ({
         submit: () => {
           submitRef.current?.click();
-        },
+        }
       }),
       []
     );
@@ -89,12 +90,22 @@ export const PersonalInformationStep = forwardRef(
             </div>
             <div>
               <div className=" font-bold mb-2">Portfolio / Github Link</div>
-              <input
-                {...register("portfolioUrl")}
-                type="text"
-                placeholder="github.com/tuansontruong"
-                className="w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
-              />
+              <div className="flex gap-1 flex-col">
+                <input
+                  {...register("portfolioUrl")}
+                  type="text"
+                  placeholder="github.com/tuansontruong"
+                  className={classNames(
+                    "w-full border-[1px] font-extralight border-gray-light rounded-md p-2 hover:border-orange focus:outline-none",
+                    {
+                      "border-error": errors.portfolioUrl?.message,
+                    }
+                  )}
+                />
+                {errors.portfolioUrl?.message && (
+                  <FieldErrorMessage message={errors.portfolioUrl.message} />
+                )}
+              </div>
             </div>
           </div>
         </div>

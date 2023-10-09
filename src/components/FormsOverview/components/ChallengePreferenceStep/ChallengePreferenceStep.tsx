@@ -1,4 +1,4 @@
-import { RadioButton } from "@common";
+import { Checkbox } from "@common";
 import { Challenge, ChallengeKeys } from "@types";
 import classNames from "classnames";
 import { useState } from "react";
@@ -28,7 +28,7 @@ export function ChallengePreferenceStep() {
           )}
           onClick={() => toggleSetChallenge(Challenge.HTML)}
         >
-          <RadioButton
+          <Checkbox
             label={Challenge.HTML}
             isParentChecked={selectedChallenge === Challenge.HTML}
           />
@@ -39,7 +39,7 @@ export function ChallengePreferenceStep() {
           )}
           onClick={() => toggleSetChallenge(Challenge.ReactJS)}
         >
-          <RadioButton
+          <Checkbox
             label={Challenge.ReactJS}
             isParentChecked={selectedChallenge === Challenge.ReactJS}
           />
@@ -50,7 +50,7 @@ export function ChallengePreferenceStep() {
           )}
           onClick={() => toggleSetChallenge(Challenge.AngularJS)}
         >
-          <RadioButton
+          <Checkbox
             label={Challenge.AngularJS}
             isParentChecked={selectedChallenge === Challenge.AngularJS}
           />
@@ -61,7 +61,7 @@ export function ChallengePreferenceStep() {
           )}
           onClick={() => toggleSetChallenge(Challenge.VueJS)}
         >
-          <RadioButton
+          <Checkbox
             label={Challenge.VueJS}
             isParentChecked={selectedChallenge === Challenge.VueJS}
           />
