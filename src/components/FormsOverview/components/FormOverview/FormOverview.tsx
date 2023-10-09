@@ -19,11 +19,22 @@ export function FormOverview() {
 
   const {
     personalInformationStepRef,
+    skillLevelStepRef,
+
     personalInformationData,
+    skillLevelData,
 
     onSubmitGlobal,
     onValidateCurrentForm,
-  } = useFormManagement({ currentHash, proceedToNextHash });
+  } = useFormManagement({ currentHash, proceedToNextHash, goBackToPrevHash });
+
+  const onClickNextBtn = () => {
+    onValidateCurrentForm("next");
+  };
+
+  const onClickBackBtn = () => {
+    onValidateCurrentForm("back");
+  };
 
   return (
     <div className="w-[90%] md:w-full m-auto max-w-3xl bg-white drop-shadow-lg rounded-md p-4">
@@ -41,7 +52,11 @@ export function FormOverview() {
             />
           </Case>
           <Case condition={currentHash === "#SkillLevel"}>
-            <SkillLevelStep />
+            <SkillLevelStep
+              onSubmitGlobal={onSubmitGlobal}
+              ref={skillLevelStepRef}
+              defaultValues={skillLevelData}
+            />
           </Case>
           <Case condition={currentHash === "#ChallengePreference"}>
             <ChallengePreferenceStep />
@@ -51,8 +66,8 @@ export function FormOverview() {
         <Separator />
 
         <FormFooter
-          proceedToNextStep={onValidateCurrentForm}
-          goBackToPrevStep={goBackToPrevHash}
+          proceedToNextStep={onClickNextBtn}
+          goBackToPrevStep={onClickBackBtn}
           isFirstStep={currentHash === "#PersonalInfomation"}
           isLastStep={!currentHash}
         />
