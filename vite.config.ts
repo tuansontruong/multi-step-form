@@ -14,4 +14,7 @@ export default defineConfig({
       { find: "@schemas", replacement: resolve(__dirname, "./src/schemas") },
     ],
   },
+  build: {
+    outDir: "build",
+  },
 });
