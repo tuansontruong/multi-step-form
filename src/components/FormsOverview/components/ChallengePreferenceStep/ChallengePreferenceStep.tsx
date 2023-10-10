@@ -1,8 +1,9 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 
-import { Checkbox, FieldErrorMessage, useForm } from "@common";
-import { ChallengePreference, challengePreferenceSchema } from "@models";
 import { Challenge } from "@types";
+import { ChallengePreference } from "@models";
+import { challengePreferenceSchema } from "@schemas";
+import { Checkbox, FieldErrorMessage, useForm } from "@common";
 
 export interface IChallengePreferenceStepProps {
   onSubmitGlobal: (data: any) => void;

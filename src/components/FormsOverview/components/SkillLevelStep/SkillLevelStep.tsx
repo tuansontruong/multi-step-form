@@ -1,7 +1,8 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 
 import { Level } from "@types";
-import { SkillLevel, skillLevelSchema } from "@models";
+import { SkillLevel } from "@models";
+import { skillLevelSchema } from "@schemas";
 import { useForm, FieldErrorMessage, RadioButton } from "@common";
 
 export interface ISkillLevelProps {

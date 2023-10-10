@@ -11,6 +11,7 @@ export default defineConfig({
       { find: "@models", replacement: resolve(__dirname, "./src/models") },
       { find: "@hooks", replacement: resolve(__dirname, "./src/hooks") },
       { find: "@types", replacement: resolve(__dirname, "./src/types") },
+      { find: "@schemas", replacement: resolve(__dirname, "./src/schemas") },
     ],
   },
 });
