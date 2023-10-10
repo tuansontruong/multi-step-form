@@ -1,8 +1,9 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
-import { useForm } from "@common";
-import { PersonalInformation, personalInformationSchema } from "@models";
-import { FieldErrorMessage } from "../../../../common/FieldErrorMessage";
 import classNames from "classnames";
+
+import { PersonalInformation } from "@models";
+import { useForm, FieldErrorMessage } from "@common";
+import { personalInformationSchema } from "@schemas";
 
 interface IPersonalInformationStep {
   onSubmitGlobal: (data: any) => void;
@@ -18,7 +19,6 @@ export const PersonalInformationStep = forwardRef(
         defaultValues
       );
 
-
     const submitRef = useRef<HTMLInputElement>(null);
 
     // expose submit function to parent component
@@ -27,7 +27,7 @@ export const PersonalInformationStep = forwardRef(
       () => ({
         submit: () => {
           submitRef.current?.click();
-        }
+        },
       }),
       []
     );
