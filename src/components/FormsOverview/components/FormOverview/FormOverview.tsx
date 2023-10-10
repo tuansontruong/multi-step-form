@@ -20,9 +20,11 @@ export function FormOverview() {
   const {
     personalInformationStepRef,
     skillLevelStepRef,
+    challengePreferenceStepRef,
 
     personalInformationData,
     skillLevelData,
+    challengePreferenceData,
 
     onSubmitGlobal,
     validateFormThenProceed,
@@ -59,7 +61,11 @@ export function FormOverview() {
             />
           </Case>
           <Case condition={currentHash === "#ChallengePreference"}>
-            <ChallengePreferenceStep />
+            <ChallengePreferenceStep
+              onSubmitGlobal={onSubmitGlobal}
+              ref={challengePreferenceStepRef}
+              defaultValues={challengePreferenceData}
+            />
           </Case>
         </Switch>
 
