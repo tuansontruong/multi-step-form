@@ -11,7 +11,7 @@ export function Button(props: IButtonProps) {
     return (
       <button
         {...rest}
-        className="bg-orange border-[1px] border-white text-white rounded-md font-extralight px-4 py-2 hover:bg-[#e65c2c]"
+        className="bg-orange border-[1px] border-white text-white rounded-xl font-extralight px-4 py-2 hover:bg-[#e65c2c]"
       >
         {children}
       </button>
@@ -20,7 +20,7 @@ export function Button(props: IButtonProps) {
   return (
     <button
       {...rest}
-      className=" bg-white border-[1px] border-orange text-orange rounded-md font-extralight px-4 py-2 hover:bg-slate-100"
+      className=" bg-white border-[1px] border-orange text-orange rounded-xl font-extralight px-4 py-2 hover:bg-slate-100"
     >
       {children}
     </button>

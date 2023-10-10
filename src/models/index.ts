@@ -1,4 +1,4 @@
 export * from "./User";
-export * from "./PersonalInformationStep";
-export * from "./SkillLevelStep";
-export * from "./ChallengeStep";
+export * from "./PersonalInformation";
+export * from "./SkillLevel";
+export * from "./Challenge";

@@ -16,7 +16,7 @@ export function RadioButton({
   return (
     <label
       className={classNames(
-        "border-[1px] border-gray-light rounded-md p-4 flex flex-row items-center gap-4 hover:cursor-pointer hover:border-orange",
+        "border-[1px] border-gray-light rounded-xl p-4 flex flex-row items-center gap-4 hover:cursor-pointer hover:border-orange",
         { "border-orange": isSelected }
       )}
     >

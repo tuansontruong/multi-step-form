@@ -39,7 +39,7 @@ export function FormOverview() {
   };
 
   return (
-    <div className="w-[90%] md:w-full m-auto max-w-3xl bg-white drop-shadow-lg rounded-md p-4">
+    <div className="w-[90%] md:w-full m-auto max-w-3xl bg-white shadow-xl rounded-xl p-4">
       <div className="flex flex-col gap-6">
         <FormSteps numberOfSteps={numberOfSteps} currentRoute={currentHash} />
 
