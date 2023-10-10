@@ -1,6 +1,3 @@
-import { object, InferType, mixed } from "yup";
-import { Challenge, ChallengeKeys, Level, LevelKeys } from "@types";
-
 // export const userSchema = object({
 //   fullName: string().required(),
 //   email: string().email().required(),
