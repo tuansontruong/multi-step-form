@@ -1,28 +1,30 @@
 import classNames from "classnames";
-import { Fragment } from "react";
-
-import { ChallengeKeys } from "@types";
-
 export interface ICheckboxProps {
-  label: ChallengeKeys;
-  isParentChecked: boolean;
+  inputKey: string;
+  isSelected: boolean | undefined;
+  register: any;
 }
 
-export function Checkbox({
-  label,
-  isParentChecked = false,
-}: ICheckboxProps) {
+export function Checkbox({ inputKey, isSelected, register }: ICheckboxProps) {
   return (
-    <Fragment>
+    <label
+      className={classNames(
+        "border-[1px] border-gray-light rounded-md p-4 flex flex-row items-center gap-4 hover:cursor-pointer hover:border-orange",
+        {
+          "border-orange": isSelected,
+        }
+      )}
+    >
       <input
+        {...register()}
         type="checkbox"
-        id={label}
-        defaultChecked={isParentChecked}
+        id={inputKey}
+        value={inputKey}
         className="relative peer appearance-none w-5 h-5 border-2 border-gray rounded-md bg-white shrink-0
         checked:bg-orange checked:border-0 hover: cursor-pointer"
       />
-      <label htmlFor={label} className=" peer uppercase">
-        {label}
+      <label htmlFor={inputKey} className=" peer capitalize cursor-pointer">
+        {inputKey}
       </label>
       <svg
         className={classNames(
@@ -38,6 +40,6 @@ export function Checkbox({
       >
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
-    </Fragment>
+    </label>
   );
 }

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
+
 import { ROUTES_KEY } from "@types";
-import { PersonalInformation, SkillLevel } from "@models";
+import { PersonalInformation, SkillLevel, ChallengePreference } from "@models";
 
 export interface IuseFormManagementProps {
   currentHash: ROUTES_KEY;
@@ -13,7 +14,6 @@ export function useFormManagement({
   proceedToNextHash,
   goBackToPrevHash,
 }: IuseFormManagementProps) {
-
   // ref to submit each form from parent component
   const personalInformationStepRef = useRef<HTMLFormElement>(null);
   const skillLevelStepRef = useRef<HTMLFormElement>(null);
@@ -28,6 +28,8 @@ export function useFormManagement({
       portfolioUrl: "",
     });
   const [skillLevelData, setSkillLevelData] = useState<SkillLevel>();
+  const [challengePreferenceData, setChallengePreferenceData] =
+    useState<ChallengePreference>({ challenge: [] });
 
   // ref for action after validation succeed
   const nextCTA = useRef<string>();
@@ -61,6 +63,9 @@ export function useFormManagement({
     if (currentHash === "#SkillLevel") {
       setSkillLevelData(data);
     }
+    if (currentHash === "#ChallengePreference") {
+      setChallengePreferenceData(data);
+    }
     proceedAfterValidation();
     nextCTA.current = undefined;
   };
@@ -74,6 +79,7 @@ export function useFormManagement({
 
     personalInformationData,
     skillLevelData,
+    challengePreferenceData,
 
     validateFormThenProceed,
   };

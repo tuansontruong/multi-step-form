@@ -1,8 +1,10 @@
-import { InferType, mixed, object } from "yup";
-import { Challenge, ChallengeKeys } from "@types";
+import { InferType, array, object, string } from "yup";
+import { Challenge } from "@types";
 
 export const challengePreferenceSchema = object({
-  challenge: mixed<ChallengeKeys>().oneOf(Object.values(Challenge)),
+  challenge: array()
+    .of(string().oneOf(Object.values(Challenge)))
+    .min(1, "Please select at least one of the challenges preference above!"),
 });
 
 export interface ChallengePreference
