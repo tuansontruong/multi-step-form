@@ -13,12 +13,13 @@ export function useFormManagement({
   proceedToNextHash,
   goBackToPrevHash,
 }: IuseFormManagementProps) {
-  // ref for each form
+
+  // ref to submit each form from parent component
   const personalInformationStepRef = useRef<HTMLFormElement>(null);
   const skillLevelStepRef = useRef<HTMLFormElement>(null);
   const challengePreferenceStepRef = useRef<HTMLFormElement>(null);
 
-  // states of each form
+  // states to store data of each form
   const [personalInformationData, setPersonalInformationData] =
     useState<PersonalInformation>({
       fullName: "",
@@ -26,12 +27,12 @@ export function useFormManagement({
       phoneNumber: "",
       portfolioUrl: "",
     });
-
   const [skillLevelData, setSkillLevelData] = useState<SkillLevel>();
 
-  const currentCTA = useRef<string>();
+  // ref for action after validation succeed
+  const nextCTA = useRef<string>();
 
-  const onValidateCurrentForm = (currentAction: string) => {
+  const validateFormThenProceed = (nextAction: "next" | "back") => {
     if (currentHash === "#PersonalInfomation") {
       personalInformationStepRef.current?.submit();
     }
@@ -41,13 +42,14 @@ export function useFormManagement({
     if (currentHash === "#ChallengePreference") {
       challengePreferenceStepRef.current?.submit();
     }
-    currentCTA.current = currentAction;
+    // set next action to be executed after validation succeed
+    nextCTA.current = nextAction;
   };
 
-  const proceedToNextCTA = () => {
-    if (currentCTA.current === "next") {
+  const proceedAfterValidation = () => {
+    if (nextCTA.current === "next") {
       proceedToNextHash();
-    } else if (currentCTA.current === "back") {
+    } else if (nextCTA.current === "back") {
       goBackToPrevHash();
     }
   };
@@ -59,17 +61,20 @@ export function useFormManagement({
     if (currentHash === "#SkillLevel") {
       setSkillLevelData(data);
     }
-    proceedToNextCTA();
-    currentCTA.current = undefined;
+    proceedAfterValidation();
+    nextCTA.current = undefined;
   };
 
   return {
     personalInformationStepRef,
     skillLevelStepRef,
     challengePreferenceStepRef,
+
     onSubmitGlobal,
+
     personalInformationData,
     skillLevelData,
-    onValidateCurrentForm,
+
+    validateFormThenProceed,
   };
 }
