@@ -1,3 +1,3 @@
-export { challengePreferenceSchema } from "./challengePreference";
-export { personalInformationSchema } from "./personalInformation";
-export { skillLevelSchema } from "./skillLevel";
+export * from "./challengePreference";
+export * from "./personalInformation";
+export * from "./skillLevel";
