@@ -42,14 +42,14 @@ export const PersonalInformationStep = forwardRef(
           </div>
           <div className=" mt-6 grid gap-4 grid-cols-1 md:grid-cols-2 grid-rows-2">
             <div>
-              <div className=" font-bold mb-2">Full Name</div>
+              <div className=" font-extrabold mb-2">Full Name</div>
               <div className="flex gap-1 flex-col">
                 <input
                   {...register("fullName")}
                   type="text"
                   placeholder="Shawn Mendes"
                   className={classNames(
-                    "w-full border-[1px] font-extralight border-gray-light rounded-md p-2 hover:border-orange focus:outline-none",
+                    "w-full border-[1px] font-extralight border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600",
                     {
                       "border-error": errors.fullName?.message,
                     }
@@ -68,7 +68,7 @@ export const PersonalInformationStep = forwardRef(
                   type="text"
                   placeholder="name@email.com"
                   className={classNames(
-                    "w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none",
+                    "w-full border-[1px] border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600",
                     {
                       "border-error": errors.email?.message,
                     }
@@ -85,7 +85,7 @@ export const PersonalInformationStep = forwardRef(
                 {...register("phoneNumber")}
                 type="text"
                 placeholder="+1 234 567 890"
-                className="w-full border-[1px] border-gray-light rounded-md p-2 hover:border-orange focus:outline-none"
+                className="w-full border-[1px] border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600"
               />
             </div>
             <div>
@@ -96,7 +96,7 @@ export const PersonalInformationStep = forwardRef(
                   type="text"
                   placeholder="github.com/tuansontruong"
                   className={classNames(
-                    "w-full border-[1px] font-extralight border-gray-light rounded-md p-2 hover:border-orange focus:outline-none",
+                    "w-full border-[1px] font-extralight border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600",
                     {
                       "border-error": errors.portfolioUrl?.message,
                     }
