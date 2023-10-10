@@ -25,15 +25,15 @@ export function FormOverview() {
     skillLevelData,
 
     onSubmitGlobal,
-    onValidateCurrentForm,
+    validateFormThenProceed,
   } = useFormManagement({ currentHash, proceedToNextHash, goBackToPrevHash });
 
   const onClickNextBtn = () => {
-    onValidateCurrentForm("next");
+    validateFormThenProceed("next");
   };
 
   const onClickBackBtn = () => {
-    onValidateCurrentForm("back");
+    validateFormThenProceed("back");
   };
 
   return (
