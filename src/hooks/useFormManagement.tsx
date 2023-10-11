@@ -1,19 +1,21 @@
 import { useRef } from "react";
 
 import { ROUTES_KEY } from "@types";
-import { PersonalInformation, SkillLevel, ChallengePreference } from "@models";
 import { userSchema } from "@schemas";
+import { PersonalInformation, SkillLevel, ChallengePreference } from "@models";
 
 export interface IuseFormManagementProps {
   currentHash: ROUTES_KEY;
   proceedToNextHash: () => void;
   goBackToPrevHash: () => void;
+  setAppError: (msg: string) => void;
 }
 
 export function useFormManagement({
   currentHash,
   proceedToNextHash,
   goBackToPrevHash,
+  setAppError,
 }: IuseFormManagementProps) {
   // ref to submit each form from parent component
   const personalInformationStepRef = useRef<HTMLFormElement>(null);
@@ -32,7 +34,7 @@ export function useFormManagement({
     challenge: [],
   });
 
-  // ref for action after validation succeed
+  // ref for action after any form validation succeed
   const nextCTA = useRef<string>();
 
   const validateFormThenProceed = (nextAction: "next" | "back") => {
@@ -76,8 +78,9 @@ export function useFormManagement({
       challengePreferenceData.current = data;
 
       // only check validation of all forms before user proceed to 'review & confirm' step
+      // this is fallback logic in case all data get lost (i.e. user refresh the page,...)
       if (nextCTA.current === "next" && !isAllFormsValidated()) {
-        alert("please fill all fields");
+        setAppError("Please fill in all forms before proceeding!");
         return;
       }
     }

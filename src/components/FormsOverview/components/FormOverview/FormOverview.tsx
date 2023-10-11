@@ -10,10 +10,15 @@ import {
   PersonalInformationStep,
   SkillLevelStep,
 } from "..";
+import { SetStateAction } from "react";
 
 const numberOfSteps = 4;
 
-export function FormOverview() {
+export function FormOverview({
+  setAppError,
+}: {
+  setAppError: SetStateAction<any>;
+}) {
   const { currentHash, proceedToNextHash, goBackToPrevHash } =
     useLocationHash();
 
@@ -28,7 +33,12 @@ export function FormOverview() {
 
     onSubmitGlobal,
     validateFormThenProceed,
-  } = useFormManagement({ currentHash, proceedToNextHash, goBackToPrevHash });
+  } = useFormManagement({
+    currentHash,
+    proceedToNextHash,
+    goBackToPrevHash,
+    setAppError,
+  });
 
   const onClickNextBtn = () => {
     validateFormThenProceed("next");
