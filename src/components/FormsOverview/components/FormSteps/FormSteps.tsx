@@ -15,6 +15,8 @@ const hashToStepMapper = (step: ROUTES_KEY) => {
       return 2;
     case ROUTES.ChallengePreference:
       return 3;
+    case ROUTES.ReviewAndConfirm:
+      return 4;
     default:
       return 1;
   }

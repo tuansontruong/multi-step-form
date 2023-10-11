@@ -1,11 +1,4 @@
-// export const userSchema = object({
-//   fullName: string().required(),
-//   email: string().email().required(),
-//   phoneNumber: string().required(),
-//   portfolioUrl: string().url().required(),
+import { InferType } from "yup";
+import { userSchema } from "../schemas";
 
-//   skillLevel: mixed<LevelKeys>().oneOf(Object.values(Level)),
-//   challenge: mixed<ChallengeKeys>().oneOf(Object.values(Challenge)),
-// });
-
-// export interface User extends InferType<typeof userSchema> {}
+export interface User extends InferType<typeof userSchema> {}

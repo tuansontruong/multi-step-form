@@ -35,6 +35,12 @@ export function FormOverview() {
   };
 
   const onClickBackBtn = () => {
+    // last step no need to validate form when click 'back' button
+    if (currentHash === "#ReviewAndConfirm") {
+      goBackToPrevHash();
+      return;
+    }
+
     validateFormThenProceed("back");
   };
 
@@ -50,21 +56,21 @@ export function FormOverview() {
             <PersonalInformationStep
               onSubmitGlobal={onSubmitGlobal}
               ref={personalInformationStepRef}
-              defaultValues={personalInformationData}
+              defaultValues={personalInformationData.current}
             />
           </Case>
           <Case condition={currentHash === "#SkillLevel"}>
             <SkillLevelStep
               onSubmitGlobal={onSubmitGlobal}
               ref={skillLevelStepRef}
-              defaultValues={skillLevelData}
+              defaultValues={skillLevelData.current}
             />
           </Case>
           <Case condition={currentHash === "#ChallengePreference"}>
             <ChallengePreferenceStep
               onSubmitGlobal={onSubmitGlobal}
               ref={challengePreferenceStepRef}
-              defaultValues={challengePreferenceData}
+              defaultValues={challengePreferenceData.current}
             />
           </Case>
         </Switch>
@@ -75,7 +81,7 @@ export function FormOverview() {
           proceedToNextStep={onClickNextBtn}
           goBackToPrevStep={onClickBackBtn}
           isFirstStep={currentHash === "#PersonalInfomation"}
-          isLastStep={!currentHash}
+          isLastStep={currentHash === "#ReviewAndConfirm"}
         />
       </div>
     </div>
