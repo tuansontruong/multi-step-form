@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import { ROUTES_KEY } from "@types";
 import { PersonalInformation, SkillLevel, ChallengePreference } from "@models";
+import { userSchema } from "@schemas";
 
 export interface IuseFormManagementProps {
   currentHash: ROUTES_KEY;
@@ -20,16 +21,16 @@ export function useFormManagement({
   const challengePreferenceStepRef = useRef<HTMLFormElement>(null);
 
   // states to store data of each form
-  const [personalInformationData, setPersonalInformationData] =
-    useState<PersonalInformation>({
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      portfolioUrl: "",
-    });
-  const [skillLevelData, setSkillLevelData] = useState<SkillLevel>();
-  const [challengePreferenceData, setChallengePreferenceData] =
-    useState<ChallengePreference>({ challenge: [] });
+  const personalInformationData = useRef<PersonalInformation>({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    portfolioUrl: "",
+  });
+  const skillLevelData = useRef<SkillLevel>();
+  const challengePreferenceData = useRef<ChallengePreference>({
+    challenge: [],
+  });
 
   // ref for action after validation succeed
   const nextCTA = useRef<string>();
@@ -56,15 +57,29 @@ export function useFormManagement({
     }
   };
 
+  const isAllFormsValidated = () => {
+    return userSchema.isValidSync({
+      ...personalInformationData.current,
+      ...skillLevelData.current,
+      ...challengePreferenceData.current,
+    });
+  };
+  // execute this function means the current form is validated successfully
   const onSubmitGlobal = (data: any) => {
     if (currentHash === "#PersonalInfomation") {
-      setPersonalInformationData(data);
+      personalInformationData.current = data;
     }
     if (currentHash === "#SkillLevel") {
-      setSkillLevelData(data);
+      skillLevelData.current = data;
     }
     if (currentHash === "#ChallengePreference") {
-      setChallengePreferenceData(data);
+      challengePreferenceData.current = data;
+
+      // only check validation of all forms before user proceed to 'review & confirm' step
+      if (nextCTA.current === "next" && !isAllFormsValidated()) {
+        alert("please fill all fields");
+        return;
+      }
     }
     proceedAfterValidation();
     nextCTA.current = undefined;
