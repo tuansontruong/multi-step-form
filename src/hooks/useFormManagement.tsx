@@ -34,7 +34,7 @@ export function useFormManagement({
     challenge: [],
   });
 
-  // ref for action after validation succeed
+  // ref for action after any form validation succeed
   const nextCTA = useRef<string>();
 
   const validateFormThenProceed = (nextAction: "next" | "back") => {
