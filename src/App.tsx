@@ -9,7 +9,7 @@ function App() {
     <div className="flex flex-col gap-6 py-3 md:py-0">
       <Header />
       <FormOverview setAppError={setAppError} />
-      {appError && <ToastMessage message={appError} />}
+      <ToastMessage message={appError} />
     </div>
   );
 }

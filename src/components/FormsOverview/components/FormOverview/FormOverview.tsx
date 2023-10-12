@@ -10,7 +10,8 @@ import {
   PersonalInformationStep,
   SkillLevelStep,
 } from "..";
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
+import { ReviewAndConfirm } from "../ReviewAndConfirm";
 
 const numberOfSteps = 4;
 
@@ -45,13 +46,30 @@ export function FormOverview({
   };
 
   const onClickBackBtn = () => {
-    // last step no need to validate form when click 'back' button
+    // for last step, no need to validate form when click 'back' button
     if (currentHash === "#ReviewAndConfirm") {
       goBackToPrevHash();
       return;
     }
 
     validateFormThenProceed("back");
+  };
+
+  const [isProccessing, setIsProccessing] = useState(false);
+  const postUserData = () => {
+    setIsProccessing(true);
+    const fetchApi = new Promise((resolve) => {
+      setTimeout(() => resolve("done"), 2000);
+    });
+
+    fetchApi
+      .then(() => {
+        console.log("post succeed");
+        window.location.hash = "#Success";
+      })
+      .finally(() => {
+        setIsProccessing(false);
+      });
   };
 
   return (
@@ -66,21 +84,28 @@ export function FormOverview({
             <PersonalInformationStep
               onSubmitGlobal={onSubmitGlobal}
               ref={personalInformationStepRef}
-              defaultValues={personalInformationData.current}
+              defaultValues={personalInformationData}
             />
           </Case>
           <Case condition={currentHash === "#SkillLevel"}>
             <SkillLevelStep
               onSubmitGlobal={onSubmitGlobal}
               ref={skillLevelStepRef}
-              defaultValues={skillLevelData.current}
+              defaultValues={skillLevelData}
             />
           </Case>
           <Case condition={currentHash === "#ChallengePreference"}>
             <ChallengePreferenceStep
               onSubmitGlobal={onSubmitGlobal}
               ref={challengePreferenceStepRef}
-              defaultValues={challengePreferenceData.current}
+              defaultValues={challengePreferenceData}
+            />
+          </Case>
+          <Case condition={currentHash === "#ReviewAndConfirm"}>
+            <ReviewAndConfirm
+              personalInformationData={personalInformationData}
+              skillLevelData={skillLevelData!}
+              challengePreferenceData={challengePreferenceData}
             />
           </Case>
         </Switch>
@@ -92,6 +117,8 @@ export function FormOverview({
           goBackToPrevStep={onClickBackBtn}
           isFirstStep={currentHash === "#PersonalInfomation"}
           isLastStep={currentHash === "#ReviewAndConfirm"}
+          postUserData={postUserData}
+          isProccessing={isProccessing}
         />
       </div>
     </div>

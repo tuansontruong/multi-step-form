@@ -7,6 +7,7 @@ export default {
         orange: "#fc6c4b",
         gray: "#6a7280",
         "gray-light": "#d2d4d7",
+        "gray-extra-light": "#E5E7EB80",
         error: "rgb(239 68 68)",
       },
       fontFamily: {
