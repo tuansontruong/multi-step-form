@@ -7,7 +7,7 @@ export interface IReviewAndConfirmProps {
   challengePreferenceData: ChallengePreference;
 }
 
-export const ReviewAndConfirm = ({
+export const ReviewAndConfirmStep = ({
   personalInformationData,
   skillLevelData,
   challengePreferenceData,

@@ -1,16 +1,17 @@
 import { SetStateAction } from "react";
-import { Case, Switch } from "react-if";
+import { Case, Else, If, Switch, Then } from "react-if";
 
 import { Separator } from "@common";
 import { useLocationHash, useFormManagement, usePostData } from "@hooks";
 
 import { FormSteps } from "../FormSteps";
 import { FormFooter } from "../FormFooter";
-import { ReviewAndConfirm } from "../ReviewAndConfirm";
 import {
   ChallengePreferenceStep,
   PersonalInformationStep,
   SkillLevelStep,
+  ReviewAndConfirmStep,
+  SucceedScreen,
 } from "..";
 
 const numberOfSteps = 4;
@@ -34,6 +35,8 @@ export function FormOverview({
 
     onSubmitGlobal,
     validateFormThenProceed,
+
+    isAllFormsValidated,
   } = useFormManagement({
     currentHash,
     proceedToNextHash,
@@ -64,51 +67,61 @@ export function FormOverview({
   return (
     <div className="w-[90%] md:w-full m-auto max-w-3xl bg-white shadow-xl rounded-xl p-4">
       <div className="flex flex-col gap-6">
-        <FormSteps numberOfSteps={numberOfSteps} currentRoute={currentHash} />
-
-        <Separator />
-
-        <Switch>
-          <Case condition={currentHash === "#PersonalInfomation"}>
-            <PersonalInformationStep
-              onSubmitGlobal={onSubmitGlobal}
-              ref={personalInformationStepRef}
-              defaultValues={personalInformationData}
+        <If condition={currentHash !== "#Success"}>
+          <Then>
+            <FormSteps
+              numberOfSteps={numberOfSteps}
+              currentRoute={currentHash}
             />
-          </Case>
-          <Case condition={currentHash === "#SkillLevel"}>
-            <SkillLevelStep
-              onSubmitGlobal={onSubmitGlobal}
-              ref={skillLevelStepRef}
-              defaultValues={skillLevelData}
-            />
-          </Case>
-          <Case condition={currentHash === "#ChallengePreference"}>
-            <ChallengePreferenceStep
-              onSubmitGlobal={onSubmitGlobal}
-              ref={challengePreferenceStepRef}
-              defaultValues={challengePreferenceData}
-            />
-          </Case>
-          <Case condition={currentHash === "#ReviewAndConfirm"}>
-            <ReviewAndConfirm
-              personalInformationData={personalInformationData}
-              skillLevelData={skillLevelData}
-              challengePreferenceData={challengePreferenceData}
-            />
-          </Case>
-        </Switch>
 
-        <Separator />
+            <Separator />
 
-        <FormFooter
-          proceedToNextStep={onClickNextBtn}
-          goBackToPrevStep={onClickBackBtn}
-          isFirstStep={currentHash === "#PersonalInfomation"}
-          isLastStep={currentHash === "#ReviewAndConfirm"}
-          postUserData={postUserData}
-          isProccessing={isProccessing}
-        />
+            <Switch>
+              <Case condition={currentHash === "#PersonalInfomation"}>
+                <PersonalInformationStep
+                  onSubmitGlobal={onSubmitGlobal}
+                  ref={personalInformationStepRef}
+                  defaultValues={personalInformationData}
+                />
+              </Case>
+              <Case condition={currentHash === "#SkillLevel"}>
+                <SkillLevelStep
+                  onSubmitGlobal={onSubmitGlobal}
+                  ref={skillLevelStepRef}
+                  defaultValues={skillLevelData}
+                />
+              </Case>
+              <Case condition={currentHash === "#ChallengePreference"}>
+                <ChallengePreferenceStep
+                  onSubmitGlobal={onSubmitGlobal}
+                  ref={challengePreferenceStepRef}
+                  defaultValues={challengePreferenceData}
+                />
+              </Case>
+              <Case condition={currentHash === "#ReviewAndConfirm"}>
+                <ReviewAndConfirmStep
+                  personalInformationData={personalInformationData}
+                  skillLevelData={skillLevelData}
+                  challengePreferenceData={challengePreferenceData}
+                />
+              </Case>
+            </Switch>
+
+            <Separator />
+
+            <FormFooter
+              proceedToNextStep={onClickNextBtn}
+              goBackToPrevStep={onClickBackBtn}
+              isFirstStep={currentHash === "#PersonalInfomation"}
+              isLastStep={currentHash === "#ReviewAndConfirm"}
+              postUserData={postUserData}
+              isProccessing={isProccessing}
+            />
+          </Then>
+          <Else>
+            <SucceedScreen isAllFormsValidated={isAllFormsValidated()} />
+          </Else>
+        </If>
       </div>
     </div>
   );
