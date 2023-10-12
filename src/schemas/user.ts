@@ -12,11 +12,12 @@ function merge(
   skillLevelSchemas: ObjectSchema<SkillLevel>,
   challengePreferenceSchema: ObjectSchema<ChallengePreference>
 ): ObjectSchema<SkillLevel & PersonalInformation & ChallengePreference> {
-  return skillLevelSchemas
-    .concat(personalInformationSchema)
+  return personalInformationSchema
+    .concat(skillLevelSchemas)
     .concat(challengePreferenceSchema);
 }
 
+// this schema is the combination of all other forms
 export const userSchema = merge(
   personalInformationSchema,
   skillLevelSchema,
