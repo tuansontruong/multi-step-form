@@ -80,7 +80,9 @@ export function useFormManagement({
       // only check validation of all forms before user proceed to 'review & confirm' step
       // this is fallback logic in case all data get lost (i.e. user refresh the page,...)
       if (nextCTA.current === "next" && !isAllFormsValidated()) {
-        setAppError("Please fill in all forms before proceeding!");
+        setAppError(
+          "Please go back and fill in all required fields before proceeding!"
+        );
         return;
       }
     }
@@ -95,9 +97,9 @@ export function useFormManagement({
 
     onSubmitGlobal,
 
-    personalInformationData,
-    skillLevelData,
-    challengePreferenceData,
+    personalInformationData: personalInformationData.current,
+    skillLevelData: skillLevelData.current,
+    challengePreferenceData: challengePreferenceData.current,
 
     validateFormThenProceed,
   };

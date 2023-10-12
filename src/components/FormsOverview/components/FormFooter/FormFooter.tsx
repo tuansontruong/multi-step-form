@@ -6,6 +6,8 @@ interface FormFooterProps {
   proceedToNextStep: () => void;
   goBackToPrevStep: () => void;
   isLastStep: boolean;
+  postUserData: () => void;
+  isProccessing?: boolean;
 }
 
 export function FormFooter({
@@ -13,6 +15,8 @@ export function FormFooter({
   proceedToNextStep,
   goBackToPrevStep,
   isLastStep,
+  postUserData,
+  isProccessing,
 }: FormFooterProps) {
   return (
     <div>
@@ -33,7 +37,13 @@ export function FormFooter({
             </Button>
           </Then>
           <Else>
-            <Button variant="primary">Submit</Button>
+            <Button
+              variant="primary"
+              onClick={postUserData}
+              isLoading={isProccessing}
+            >
+              Submit
+            </Button>
           </Else>
         </If>
       </div>
