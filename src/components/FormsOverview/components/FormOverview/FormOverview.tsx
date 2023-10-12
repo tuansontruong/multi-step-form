@@ -1,17 +1,17 @@
+import { SetStateAction } from "react";
 import { Case, Switch } from "react-if";
 
 import { Separator } from "@common";
-import { useLocationHash, useFormManagement } from "@hooks";
+import { useLocationHash, useFormManagement, usePostData } from "@hooks";
 
 import { FormSteps } from "../FormSteps";
 import { FormFooter } from "../FormFooter";
+import { ReviewAndConfirm } from "../ReviewAndConfirm";
 import {
   ChallengePreferenceStep,
   PersonalInformationStep,
   SkillLevelStep,
 } from "..";
-import { SetStateAction, useState } from "react";
-import { ReviewAndConfirm } from "../ReviewAndConfirm";
 
 const numberOfSteps = 4;
 
@@ -41,35 +41,20 @@ export function FormOverview({
     setAppError,
   });
 
+  const { postData: postUserData, isProccessing } = usePostData();
+
   const onClickNextBtn = () => {
     validateFormThenProceed("next");
   };
 
   const onClickBackBtn = () => {
-    // for last step, no need to validate form when click 'back' button
+    // for last step, no need to validate when user clicks 'back' button
     if (currentHash === "#ReviewAndConfirm") {
       goBackToPrevHash();
       return;
     }
-
+    // for other steps, validate form then go back to previous step
     validateFormThenProceed("back");
-  };
-
-  const [isProccessing, setIsProccessing] = useState(false);
-  const postUserData = () => {
-    setIsProccessing(true);
-    const fetchApi = new Promise((resolve) => {
-      setTimeout(() => resolve("done"), 2000);
-    });
-
-    fetchApi
-      .then(() => {
-        console.log("post succeed");
-        window.location.hash = "#Success";
-      })
-      .finally(() => {
-        setIsProccessing(false);
-      });
   };
 
   return (
@@ -104,7 +89,7 @@ export function FormOverview({
           <Case condition={currentHash === "#ReviewAndConfirm"}>
             <ReviewAndConfirm
               personalInformationData={personalInformationData}
-              skillLevelData={skillLevelData!}
+              skillLevelData={skillLevelData}
               challengePreferenceData={challengePreferenceData}
             />
           </Case>

@@ -3,7 +3,7 @@ import { ChallengePreference, PersonalInformation, SkillLevel } from "@models";
 
 export interface IReviewAndConfirmProps {
   personalInformationData: PersonalInformation;
-  skillLevelData: SkillLevel;
+  skillLevelData: SkillLevel | undefined;
   challengePreferenceData: ChallengePreference;
 }
 
