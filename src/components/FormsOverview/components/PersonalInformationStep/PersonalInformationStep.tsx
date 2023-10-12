@@ -1,8 +1,7 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
-import classNames from "classnames";
 
 import { PersonalInformation } from "@models";
-import { useForm, FieldErrorMessage } from "@common";
+import { useForm, FieldErrorMessage, InputField } from "@common";
 import { personalInformationSchema } from "@schemas";
 
 interface IPersonalInformationStep {
@@ -44,16 +43,10 @@ export const PersonalInformationStep = forwardRef(
             <div>
               <div className=" font-extrabold mb-2">Full Name</div>
               <div className="flex gap-1 flex-col">
-                <input
-                  {...register("fullName")}
-                  type="text"
+                <InputField
                   placeholder="Shawn Mendes"
-                  className={classNames(
-                    "w-full border-[1px] font-extralight border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600",
-                    {
-                      "border-error": errors.fullName?.message,
-                    }
-                  )}
+                  register={() => register("fullName")}
+                  isError={!!errors.fullName?.message}
                 />
                 {errors.fullName?.message && (
                   <FieldErrorMessage message={errors.fullName.message} />
@@ -63,16 +56,10 @@ export const PersonalInformationStep = forwardRef(
             <div>
               <div className=" font-bold mb-2">Email Address</div>
               <div className="flex gap-1 flex-col">
-                <input
-                  {...register("email")}
-                  type="text"
+                <InputField
                   placeholder="name@email.com"
-                  className={classNames(
-                    "w-full border-[1px] border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600",
-                    {
-                      "border-error": errors.email?.message,
-                    }
-                  )}
+                  register={() => register("email")}
+                  isError={!!errors.email?.message}
                 />
                 {errors.email?.message && (
                   <FieldErrorMessage message={errors.email.message} />
@@ -81,26 +68,19 @@ export const PersonalInformationStep = forwardRef(
             </div>
             <div>
               <div className=" font-bold mb-2">Phone Number</div>
-              <input
-                {...register("phoneNumber")}
-                type="text"
+              <InputField
                 placeholder="+1 234 567 890"
-                className="w-full border-[1px] border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600"
+                register={() => register("phoneNumber")}
+                isError={!!errors.phoneNumber?.message}
               />
             </div>
             <div>
               <div className=" font-bold mb-2">Portfolio / Github Link</div>
               <div className="flex gap-1 flex-col">
-                <input
-                  {...register("portfolioUrl")}
-                  type="text"
+                <InputField
                   placeholder="github.com/tuansontruong"
-                  className={classNames(
-                    "w-full border-[1px] font-extralight border-gray-light rounded-xl p-3 hover:border-orange focus:outline-none text-zinc-600",
-                    {
-                      "border-error": errors.portfolioUrl?.message,
-                    }
-                  )}
+                  register={() => register("portfolioUrl")}
+                  isError={!!errors.portfolioUrl?.message}
                 />
                 {errors.portfolioUrl?.message && (
                   <FieldErrorMessage message={errors.portfolioUrl.message} />

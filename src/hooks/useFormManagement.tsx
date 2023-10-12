@@ -102,5 +102,7 @@ export function useFormManagement({
     challengePreferenceData: challengePreferenceData.current,
 
     validateFormThenProceed,
+
+    isAllFormsValidated,
   };
 }
