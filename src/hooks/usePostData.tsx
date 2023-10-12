@@ -6,6 +6,7 @@ import {
   UserModel,
   UserBaseModel,
 } from "@models";
+import { ROUTES } from "@types";
 
 interface IusePostDataProps {
   personalInformationData: PersonalInformation;
@@ -35,7 +36,7 @@ export function usePostData({
     fetchApi
       .then(() => {
         console.log("post succeed", user.toAPIData());
-        window.location.hash = "#Success";
+        window.location.hash = ROUTES.Success;
       })
       .finally(() => {
         setIsProccessing(false);

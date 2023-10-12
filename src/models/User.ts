@@ -11,7 +11,7 @@ export class UserModel implements UserBaseModel {
   email: string;
   phoneNumber: string | undefined = "";
   portfolioUrl: string | undefined = "";
-  skillLevel: LevelKeys | null = "beginner";
+  skillLevel: LevelKeys = "beginner";
   challenge: (string | undefined)[] | undefined = [];
 
   constructor(user: UserBaseModel) {
