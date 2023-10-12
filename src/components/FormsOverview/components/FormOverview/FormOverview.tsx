@@ -41,7 +41,11 @@ export function FormOverview({
     setAppError,
   });
 
-  const { postData: postUserData, isProccessing } = usePostData();
+  const { postData: postUserData, isProccessing } = usePostData({
+    personalInformationData,
+    skillLevelData,
+    challengePreferenceData,
+  });
 
   const onClickNextBtn = () => {
     validateFormThenProceed("next");
