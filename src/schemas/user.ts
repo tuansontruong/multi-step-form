@@ -8,8 +8,8 @@ import { skillLevelSchema } from "./skillLevel";
 import { ObjectSchema } from "yup";
 
 function merge(
-  skillLevelSchemas: ObjectSchema<SkillLevel>,
   personalInformationSchema: ObjectSchema<PersonalInformation>,
+  skillLevelSchemas: ObjectSchema<SkillLevel>,
   challengePreferenceSchema: ObjectSchema<ChallengePreference>
 ): ObjectSchema<SkillLevel & PersonalInformation & ChallengePreference> {
   return skillLevelSchemas
@@ -18,7 +18,7 @@ function merge(
 }
 
 export const userSchema = merge(
-  skillLevelSchema,
   personalInformationSchema,
+  skillLevelSchema,
   challengePreferenceSchema
 );
