@@ -14,7 +14,9 @@ export default defineConfig({
       { find: "@schemas", replacement: resolve(__dirname, "./src/schemas") },
     ],
   },
+  base: "/multi-step-form/",
   build: {
     outDir: "build",
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']
   },
 });
