@@ -10,6 +10,7 @@ https://tuansontruong.github.io/multi-step-form/
 ## Table of Contents
 - [About the app](https://github.com/tuansontruong/multi-step-form/tree/master#about-the-app)
 - [Screenshots](https://github.com/tuansontruong/multi-step-form/tree/master#screenshots)
+- [Browsers Compatibility](https://github.com/tuansontruong/multi-step-form#browsers-compatibility)
 - [Tech Stack](https://github.com/tuansontruong/multi-step-form#tech-stack)
 - [Setup](https://github.com/tuansontruong/multi-step-form#setup)
 - [Approach](https://github.com/tuansontruong/multi-step-form#approach)
