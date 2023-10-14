@@ -36,6 +36,11 @@ https://tuansontruong.github.io/multi-step-form/
 [![Screenshot-at-Oct-13-23-10-56.png](https://i.postimg.cc/s2DDffPx/Screenshot-at-Oct-13-23-10-56.png)](https://postimg.cc/JsvWPL2C)
 
 
+## Browsers Compatibility
+- Chrome >= 87
+- Firefox >= 78
+- Safari >= 14
+- Edge >= 88
 ## Tech Stack
 
 - **FE**: React (Typescript), TailwindCSS, React-hook-form, Yup
