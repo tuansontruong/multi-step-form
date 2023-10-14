@@ -7,6 +7,9 @@ Multi-Step-Form
 
 https://tuansontruong.github.io/multi-step-form/
 
+## Table of Contents
+- [About the app](https://github.com/tuansontruong/multi-step-form/tree/master#about-the-app)
+- [Screenshots](https://github.com/tuansontruong/multi-step-form/tree/master#screenshots)
 ## About the app
 - The form should have 4 steps, with a progress indicator to show users their progress.
 - Each step should have its own set of input fields.
