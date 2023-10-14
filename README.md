@@ -10,7 +10,10 @@ https://tuansontruong.github.io/multi-step-form/
 ## Table of Contents
 - [About the app](https://github.com/tuansontruong/multi-step-form/tree/master#about-the-app)
 - [Screenshots](https://github.com/tuansontruong/multi-step-form/tree/master#screenshots)
-
+- [Tech Stack](https://github.com/tuansontruong/multi-step-form#tech-stack)
+- [Setup](https://github.com/tuansontruong/multi-step-form#setup)
+- [Approach](https://github.com/tuansontruong/multi-step-form#approach)
+- [Credits](https://github.com/tuansontruong/multi-step-form#credits)
 ## About the app
 - The form should have 4 steps, with a progress indicator to show users their progress.
 - Each step should have its own set of input fields.
@@ -50,6 +53,8 @@ https://tuansontruong.github.io/multi-step-form/
 - Using `InferType` (provided by Yup) to create models from schemas which will later submit to APIs.
 - The combined model will have `toApiData()` method to convert from snake cases to camel cases object
 - App flow:
+
+
 [![multi-step-drawio.png](https://i.postimg.cc/VvBYQRks/multi-step-drawio.png)](https://postimg.cc/SYR0cc9H)
 ## Credits
 This application was developed as part of the [FrontendPro challenge](https://www.frontendpro.dev/frontend-coding-challenges/multi-step-form-lyFZYpe2Uxc8Ng4ueYud), and I would like to give a shoutout to them for creating such an engaging challenge.
