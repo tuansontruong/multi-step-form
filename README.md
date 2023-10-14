@@ -24,7 +24,6 @@ https://tuansontruong.github.io/multi-step-form/
 - After submitting the form, users should see a congratulatory message or confirmation screen.
 - Show the hover state of all the elements.
 - The component should be responsive and display correctly on different screen sizes.
-- Make this landing page look as close to the design as possible.
 
 
 
