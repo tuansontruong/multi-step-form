@@ -10,6 +10,7 @@ https://tuansontruong.github.io/multi-step-form/
 ## Table of Contents
 - [About the app](https://github.com/tuansontruong/multi-step-form/tree/master#about-the-app)
 - [Screenshots](https://github.com/tuansontruong/multi-step-form/tree/master#screenshots)
+
 ## About the app
 - The form should have 4 steps, with a progress indicator to show users their progress.
 - Each step should have its own set of input fields.
@@ -31,3 +32,24 @@ https://tuansontruong.github.io/multi-step-form/
 [![Screenshot-at-Oct-13-23-10-01.png](https://i.postimg.cc/2jJmpFX1/Screenshot-at-Oct-13-23-10-01.png)](https://postimg.cc/234ghvYY)
 [![Screenshot-at-Oct-13-23-10-56.png](https://i.postimg.cc/s2DDffPx/Screenshot-at-Oct-13-23-10-56.png)](https://postimg.cc/JsvWPL2C)
 
+
+## Tech Stack
+
+- **FE**: React (Typescript), TailwindCSS, React-hook-form, Yup
+- **Bundler**: Vite (Rollup)
+
+
+
+
+## Setup
+- clone the app
+- yarn or npm install
+- yarn dev
+## Approach
+- Using Yup to create validation schemas for each step.
+- Using `InferType` (provided by Yup) to create models from schemas which will later submit to APIs.
+- The combined model will have `toApiData()` method to convert from snake cases to camel cases object
+- App flow:
+[![multi-step-drawio.png](https://i.postimg.cc/VvBYQRks/multi-step-drawio.png)](https://postimg.cc/SYR0cc9H)
+## Credits
+This application was developed as part of the [FrontendPro challenge](https://www.frontendpro.dev/frontend-coding-challenges/multi-step-form-lyFZYpe2Uxc8Ng4ueYud), and I would like to give a shoutout to them for creating such an engaging challenge.
